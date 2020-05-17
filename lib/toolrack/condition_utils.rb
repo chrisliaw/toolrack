@@ -14,6 +14,10 @@ module Antrapol
         end
       end # is_empty?
 
+      def not_empty?(obj)
+        !is_empty?(obj)
+      end # not empty
+
     end # ConditionUtils
   end # MyToolRack
 end # Antrapol

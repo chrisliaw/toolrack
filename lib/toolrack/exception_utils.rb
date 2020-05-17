@@ -1,5 +1,5 @@
 
-require_relative 'conditions_utils'
+require_relative 'condition_utils'
 
 module Antrapol
   module MyToolRack
