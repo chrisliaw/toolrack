@@ -1,10 +1,12 @@
 
 require_relative 'condition_utils'
+require_relative 'utils'
 
 module Antrapol
   module ToolRack
     module ExceptionUtils
       include Antrapol::ToolRack::ConditionUtils
+      include Antrapol::Utils
 
       # raise_if_empty
       # Raise the given (or default if not given) exception if the val given is empty
