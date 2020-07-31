@@ -2,7 +2,7 @@ require_relative 'lib/toolrack/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "toolrack"
-  spec.version       = Antrapol::MyToolRack::VERSION
+  spec.version       = Antrapol::ToolRack::VERSION
   spec.authors       = ["Chris"]
   spec.email         = ["chrisliaw@antrapol.com"]
 
