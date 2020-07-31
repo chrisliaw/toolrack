@@ -1,7 +1,7 @@
 
 
 module Antrapol
-  module MyToolRack
+  module ToolRack
     module ConditionUtils
 
       def is_empty?(obj)

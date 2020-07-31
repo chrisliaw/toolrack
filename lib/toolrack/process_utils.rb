@@ -7,7 +7,7 @@ require 'open3'
 
 
 module Antrapol
-  module MyToolRack
+  module ToolRack
     module ProcessUtils
 
       # backtick

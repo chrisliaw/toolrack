@@ -2,7 +2,7 @@
 require_relative 'condition_utils'
 
 module Antrapol
-  module MyToolRack
+  module ToolRack
     module ExceptionUtils
       include Antrapol::MyToolRack::ConditionUtils
 

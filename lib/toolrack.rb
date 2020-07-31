@@ -9,7 +9,7 @@ require_relative 'toolrack/process_utils'
 require_relative 'toolrack/runtime_utils'
 
 module Antrapol
-  module MyToolRack
+  module ToolRack
     class Error < StandardError; end
     # Your code goes here...
   

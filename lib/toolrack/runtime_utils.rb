@@ -1,7 +1,7 @@
 
 
 module Antrapol
-  module MyToolRack
+  module ToolRack
     module RuntimeUtils
 
       def detect_os
