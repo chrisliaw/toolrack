@@ -14,7 +14,7 @@ module Antrapol
       # backtick will only return at the end of the process.
       # If in the event there is a prompt to user, this should nto be used.
       def basic_exec(cmd)
-        Antrapol::MyToolRack::Logger.instance.glogger.debug "Basic shell exec command : #{cmd}"
+        Antrapol::ToolRack::Logger.instance.glogger.debug "Basic shell exec command : #{cmd}"
         `#{cmd}`
       end # basic_shell_exec
 
@@ -22,7 +22,7 @@ module Antrapol
       # System call link the stdout and stdin to the calling process and idea 
       # to call mild interactive process
       def system_exec(cmd, opts = { }, &block)
-        Antrapol::MyToolRack::Logger.instance.glogger.debug "System exec command : #{cmd}"
+        Antrapol::ToolRack::Logger.instance.glogger.debug "System exec command : #{cmd}"
         system(cmd)
         $.
       end # system_exec
@@ -37,14 +37,14 @@ module Antrapol
       #end
 
       def popen3_exec(cmd, opts = { }, &block)
-        Antrapol::MyToolRack::Logger.instance.glogger.debug "Popen3 exec command : #{cmd}"
+        Antrapol::ToolRack::Logger.instance.glogger.debug "Popen3 exec command : #{cmd}"
   			stdout, stderr, status = Open3.capture3(cmd)
         block.call(:popen_exec, { output: stdout, error: stderr, status: status })
       end
 
       def pty_exec(cmd, opts = { }, &block)
         
-        Antrapol::MyToolRack::Logger.instance.glogger.debug "PTY exec command : #{cmd}"
+        Antrapol::ToolRack::Logger.instance.glogger.debug "PTY exec command : #{cmd}"
 
         logger = opts[:logger] || Tlogger.new(STDOUT)
         expect = opts[:expect] || { }
@@ -99,5 +99,5 @@ module Antrapol
     class ProcessUtilsEngine
       extend ProcessUtils
     end
-  end # module MyToolRack
+  end # module ToolRack
 end # module Antrapol
