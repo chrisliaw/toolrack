@@ -1,12 +1,10 @@
 
 require_relative 'condition_utils'
-require_relative 'utils'
 
 module Antrapol
   module ToolRack
     module ExceptionUtils
       include Antrapol::ToolRack::ConditionUtils
-      include Antrapol::Utils
 
       # raise_if_empty
       # Raise the given (or default if not given) exception if the val given is empty
@@ -16,6 +14,7 @@ module Antrapol
       def raise_if_empty(val, message, error = Antrapol::ToolRack::Error)
         raise_error(message,error) if is_empty?(val)
       end # raise_if_empty
+      alias_method :raise_if_empty?, :raise_if_empty
 
       # 
       # raise_if_false
@@ -25,6 +24,7 @@ module Antrapol
           raise_error(message,error)
         end 
       end # raise_if_false
+      alias_method :raise_if_false?, :raise_if_false
 
       #
       # raise_if_true
@@ -32,6 +32,7 @@ module Antrapol
       def raise_if_true(bool, message, error = Antrapol::ToolRack::Error)
         raise_if_false(!bool, message, error)
       end # raise_if_true
+      alias_method :raise_if_true?, :raise_if_true
 
       protected
       def raise_error(message, error = Antrapol::ToolRack::Error)
