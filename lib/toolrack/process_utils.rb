@@ -10,6 +10,34 @@ module Antrapol
   module ToolRack
     module ProcessUtils
 
+      def exec(cmd, opts = { }, &block)
+        type = opts[:exec_type]
+        if not type.nil?
+          exec2(type, cmd, opts, &block)
+        else
+          exec2(:basic, cmd, opts, &block)
+        end
+      end
+
+      def exec2(type, cmd, opts = { }, &block)
+        case type
+        when :basic
+          Antrapol::ToolRack::Logger.instance.glogger.debug "Basic execution"
+          basic_exec(cmd)
+        when :system
+          Antrapol::ToolRack::Logger.instance.glogger.debug "System execution"
+          system_exec(cmd, opts, &block)
+        when :popen3
+          Antrapol::ToolRack::Logger.instance.glogger.debug "Popen3 execution"
+          popen3_exec(cmd, opts, &block)
+        else
+          Antrapol::ToolRack::Logger.instance.glogger.debug "Basic (fallback) execution"
+          # basic
+          basic_exec(cmd) 
+        end
+      end
+
+      private
       # backtick
       # backtick will only return at the end of the process.
       # If in the event there is a prompt to user, this should nto be used.
