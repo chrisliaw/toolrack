@@ -13,11 +13,6 @@ module Antrapol
     class Error < StandardError; end
     # Your code goes here...
  
-    class GlobalConf
-      include Singleton
-
-    end
-
     class Logger
       include Singleton
       include Antrapol::ToolRack::ConditionUtils
