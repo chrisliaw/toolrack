@@ -23,7 +23,7 @@ module Antrapol
         case type
         when :basic
           Antrapol::ToolRack::Logger.instance.glogger.debug "Basic execution"
-          basic_exec(cmd)
+          basic_exec(cmd, &block)
         when :system
           Antrapol::ToolRack::Logger.instance.glogger.debug "System execution"
           system_exec(cmd, opts, &block)
@@ -33,7 +33,7 @@ module Antrapol
         else
           Antrapol::ToolRack::Logger.instance.glogger.debug "Basic (fallback) execution"
           # basic
-          basic_exec(cmd) 
+          basic_exec(cmd, &block) 
         end
       end
 
@@ -41,9 +41,14 @@ module Antrapol
       # backtick
       # backtick will only return at the end of the process.
       # If in the event there is a prompt to user, this should nto be used.
-      def basic_exec(cmd)
+      def basic_exec(cmd, &block)
         Antrapol::ToolRack::Logger.instance.glogger.debug "Basic shell exec command : #{cmd}"
-        `#{cmd}`
+        res = `#{cmd}`
+        if block
+          block.call($?, res)
+        else
+          res
+        end
       end # basic_shell_exec
 
       # system
