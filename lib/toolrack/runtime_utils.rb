@@ -4,10 +4,9 @@ module Antrapol
   module ToolRack
     module RuntimeUtils
 
-      def RuntimeUtils.on_window?
+      def RuntimeUtils.on_windows?
         (RbConfig::CONFIG['host_os'] =~ /cygwin|mswin|mingw|bccwin|wince|emx/) != nil
       end
-      alias :on_ms_window?, :on_window
 
       def RuntimeUtils.on_mac?
         (RbConfig::CONFIG['host_os'] =~ /darwin|mac/) != nil
