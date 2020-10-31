@@ -7,6 +7,7 @@ module Antrapol
       def RuntimeUtils.on_window?
         (RbConfig::CONFIG['host_os'] =~ /cygwin|mswin|mingw|bccwin|wince|emx/) != nil
       end
+      alias :on_ms_window?, :on_window
 
       def RuntimeUtils.on_mac?
         (RbConfig::CONFIG['host_os'] =~ /darwin|mac/) != nil
