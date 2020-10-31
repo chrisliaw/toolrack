@@ -10,3 +10,5 @@
 *.log
 tags
 Gemfile.lock
+test.ssh
+test.ssh.pub
