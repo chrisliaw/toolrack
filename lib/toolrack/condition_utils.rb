@@ -5,7 +5,9 @@ module Antrapol
     module ConditionUtils
 
       def is_empty?(obj)
-        if obj.nil?
+        if not defined?(obj)
+          true
+        elsif obj.nil?
           true
         elsif obj.respond_to?(:empty?)
           obj.empty?
