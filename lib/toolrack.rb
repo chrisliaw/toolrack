@@ -3,6 +3,8 @@ require "toolrack/version"
 require 'tlogger'
 require 'singleton'
 
+require 'fileutils'
+
 require_relative 'toolrack/exception_utils'
 require_relative 'toolrack/condition_utils'
 require_relative 'toolrack/process_utils'
@@ -21,16 +23,19 @@ module Antrapol
       def initialize
         # boolean
         loggerDebug = ENV['TOOLRACK_DEBUG']
-        logFile = ENV['TOOLRACK_LOGFILE']
+        logFile = ENV['TOOLRACK_LOGFILE'] || File.join(Dir.home, 'antrapol_logs','toolrack.log')
         maxLogNo = ENV['TOOLRACK_MAX_LOGFILE'] || 10
         logFileSize = ENV['TOOLRACK_MAX_LOGFILE_SIZE'] || 10*1024*1024
+
+        logFileDir = File.dirname(logFile)
+        if not File.exist?(logFileDir)
+          File.mkdir_p(logFileDir)
+        end
         
-        if not is_empty?(loggerDebug) and loggerDebug
+        if not_empty?(loggerDebug) and (loggerDebug.downcase == 'true')
           @glogger = Tlogger.new(STDOUT)
-        elsif not is_empty?(logFile)
-          @glogger = Tlogger.new(logFile,maxLogNo,logFileSize)
         else
-          @glogger = Tlogger.new('toolrack.log',maxLogNo,logFileSize)
+          @glogger = Tlogger.new(logFile,maxLogNo,logFileSize)
         end
       end
     end
