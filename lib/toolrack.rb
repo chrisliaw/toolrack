@@ -29,7 +29,7 @@ module Antrapol
 
         logFileDir = File.dirname(logFile)
         if not File.exist?(logFileDir)
-          File.mkdir_p(logFileDir)
+          FileUtils.mkdir_p(logFileDir)
         end
         
         if not_empty?(loggerDebug) and (loggerDebug.downcase == 'true')
