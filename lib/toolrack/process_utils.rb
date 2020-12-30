@@ -1,9 +1,18 @@
 
-require 'pty'
+require_relative 'runtime_utils'
+
+if Antrapol::ToolRack::RuntimeUtils.on_windows?
+  # pty causing "function 'openpty' not found in msvcrt.dll" in some
+  # windows platform. Due to patches?
+  Antrapol::ToolRack::Logger.instance.glogger.debug "On Windows. Not going to load gem 'pty'"
+else
+  require 'pty'
+end
 require 'expect'
 require 'io/console'
 require 'tlogger'
 require 'open3'
+
 
 
 module Antrapol
@@ -13,13 +22,13 @@ module Antrapol
       def exec(cmd, opts = { }, &block)
         type = opts[:exec_type]
         if not type.nil?
-          exec2(type, cmd, opts, &block)
+          instance(type, cmd, opts, &block)
         else
-          exec2(:basic, cmd, opts, &block)
+          instance(:basic, cmd, opts, &block)
         end
       end
 
-      def exec2(type, cmd, opts = { }, &block)
+      def instance(type, cmd, opts = { }, &block)
         case type
         when :basic
           Antrapol::ToolRack::Logger.instance.glogger.debug "Basic execution"
@@ -78,6 +87,11 @@ module Antrapol
       def pty_exec(cmd, opts = { }, &block)
         
         Antrapol::ToolRack::Logger.instance.glogger.debug "PTY exec command : #{cmd}"
+
+        # pty seems error running on windows + jruby
+        if Antrapol::ToolRack::RuntimeUtils.on_windows?
+          raise Exception, "You're running on Windows. There have been report that error \"function 'openpty' not found in msvcrt.dll\". Probably due to patches. For now pty_exec() shall be halted"
+        end
 
         logger = opts[:logger] || Tlogger.new(STDOUT)
         expect = opts[:expect] || { }
