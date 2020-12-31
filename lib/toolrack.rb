@@ -5,11 +5,6 @@ require 'singleton'
 
 require 'fileutils'
 
-require_relative 'toolrack/exception_utils'
-require_relative 'toolrack/condition_utils'
-require_relative 'toolrack/process_utils'
-require_relative 'toolrack/runtime_utils'
-
 module Antrapol
   module ToolRack
     class Error < StandardError; end
@@ -42,3 +37,10 @@ module Antrapol
   
   end
 end
+
+require_relative 'toolrack/exception_utils'
+require_relative 'toolrack/condition_utils'
+require_relative 'toolrack/process_utils'
+require_relative 'toolrack/runtime_utils'
+
+
