@@ -1,4 +1,5 @@
 
+require_relative 'global'
 require_relative 'runtime_utils'
 
 if Antrapol::ToolRack::RuntimeUtils.on_windows?
