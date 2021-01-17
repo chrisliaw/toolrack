@@ -10,7 +10,11 @@ module Antrapol
         elsif obj.nil?
           true
         elsif obj.respond_to?(:empty?)
-          obj.empty?
+          if obj.respond_to?(:strip)
+            obj.strip.empty?
+          else
+            obj.empty?
+          end
         else
           false
         end
