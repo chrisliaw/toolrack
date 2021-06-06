@@ -19,4 +19,6 @@ module Antrapol
   end
 end
 
+ToolRack = Antrapol::ToolRack
+
 
