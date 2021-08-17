@@ -10,6 +10,7 @@ require_relative 'toolrack/exception_utils'
 require_relative 'toolrack/condition_utils'
 require_relative 'toolrack/process_utils'
 require_relative 'toolrack/runtime_utils'
+require_relative 'toolrack/data_conversion_utils'
 
 module Antrapol
   module ToolRack
@@ -20,5 +21,6 @@ module Antrapol
 end
 
 ToolRack = Antrapol::ToolRack
+ToolRack::DataConv = Antrapol::ToolRack::DataConversionUtils
 
 
