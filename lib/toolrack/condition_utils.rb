@@ -24,6 +24,10 @@ module Antrapol
         !is_empty?(obj)
       end # not empty
 
+      def is_boolean?(val)
+        !!val == val
+      end
+
     end # ConditionUtils
   end # MyToolRack
 end # Antrapol
