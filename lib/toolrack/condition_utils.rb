@@ -15,10 +15,10 @@ module Antrapol
           else
             obj.empty?
           end
-        #elsif obj.respond_to?(:length)
-        #  obj.length == 0
-        #elsif obj.respond_to?(:size)
-        #  obj.size == 0
+        elsif obj.respond_to?(:length)
+          obj.length == 0
+        elsif obj.respond_to?(:size)
+          obj.size == 0
         else
           false
         end

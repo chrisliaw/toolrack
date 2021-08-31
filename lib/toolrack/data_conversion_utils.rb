@@ -55,7 +55,7 @@ module Antrapol
 
       def from_b58(str)
         return "" if is_empty?(str)
-        Base58.base58.to_binary(str) 
+        Base58.base58_to_binary(str) 
       end
 
       def b58_to_number(str)

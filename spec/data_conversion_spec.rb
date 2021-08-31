@@ -36,5 +36,19 @@ RSpec.describe "ToolRack Data Conversion Utils" do
 
   end
 
+  it 'converts to Base58 and conver it back' do
+    
+    bin = SecureRandom.random_bytes(1024)
+    b58 = to_b58(bin)
+
+    p b58
+    expect(b58).not_to be_nil
+    expect(b58.length > 0).to be true
+
+    rbin = from_b58(b58)
+    expect(rbin == bin).to be true
+
+  end
+
 
 end
