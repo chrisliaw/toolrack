@@ -5,6 +5,7 @@ require 'toolrack'
 class ToolrackTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil Antrapol::ToolRack::VERSION
+    refute_nil ToolRack::VERSION
   end
 
   #def test_pty
