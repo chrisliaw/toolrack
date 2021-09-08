@@ -11,6 +11,7 @@ require_relative 'toolrack/condition_utils'
 require_relative 'toolrack/process_utils'
 require_relative 'toolrack/runtime_utils'
 require_relative 'toolrack/data_conversion_utils'
+require_relative 'toolrack/password_utils'
 
 module Antrapol
   module ToolRack
@@ -22,5 +23,7 @@ end
 
 ToolRack = Antrapol::ToolRack
 ToolRack::DataConv = Antrapol::ToolRack::DataConversionUtils
+ToolRack::CondUtils = ToolRack::ConditionUtils
+ToolRack::PassUtils = ToolRack::PasswordUtils
 
 
