@@ -3,7 +3,7 @@
 require 'toolrack'
 require 'securerandom'
 
-include ToolRack::DataConv
+include TR::DataConvUtils
 
 RSpec.describe "ToolRack Data Conversion Utils" do
 

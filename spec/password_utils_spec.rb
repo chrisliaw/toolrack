@@ -1,7 +1,7 @@
 
 require 'toolrack'
 
-include ToolRack::PassUtils
+include TR::PassUtils
 
 RSpec.describe ToolRack::PassUtils do
 
@@ -17,6 +17,7 @@ RSpec.describe ToolRack::PassUtils do
     expect(has_lowercase_alpha?('asdfF')).to be true
     expect(has_lowercase_alpha?('1234')).to be false
     expect(has_lowercase_alpha?(1234)).to be false
+    expect(has_lowercase_alpha?('!@#$')).to be false
 
     expect(all_uppercase_alpha?('ASDF')).to be true
     expect(all_uppercase_alpha?('ASDFd')).to be false
