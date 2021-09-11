@@ -122,7 +122,7 @@ Currently it has 5 modules:
   * has\_symbol?(str)
   * has\_alpha\_numeric?(str)
   * has\_alpha\_numeric\_or\_symbol?(str)
-    * All methods above start with has_\* is just to check if the given str contains the required specification. E.g if string 'abcdE' will get false status if pass to has\_lowercase\_alpha?(str)
+    * All methods above start with has_\* is just to check if the given str contains the required specification. E.g if string 'abcdE' will still get true status if pass to has\_lowercase\_alpha?(str)
 
 
 Check out the rspec folder for usage
