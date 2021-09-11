@@ -22,8 +22,20 @@ module Antrapol
 end
 
 ToolRack = Antrapol::ToolRack
-ToolRack::DataConv = Antrapol::ToolRack::DataConversionUtils
-ToolRack::CondUtils = ToolRack::ConditionUtils
-ToolRack::PassUtils = ToolRack::PasswordUtils
+TR = ToolRack
 
+ToolRack::DataConvUtils = Antrapol::ToolRack::DataConversionUtils
+TR::DataConvUtils = ToolRack::DataConvUtils
+
+ToolRack::CondUtils = ToolRack::ConditionUtils
+TR::CondUtils = ToolRack::ConditionUtils
+
+ToolRack::PassUtils = ToolRack::PasswordUtils
+TR::PassUtils = ToolRack::PasswordUtils
+
+ToolRack::ExpUtils = ToolRack::ExceptionUtils
+TR::ExpUtils = ToolRack::ExpUtils
+
+ToolRack::RTUtils = ToolRack::RuntimeUtils
+TR::RTUtils = ToolRack::RTUtils
 

@@ -1,6 +1,6 @@
 # Toolrack
 
-Toolrack just the collection of utilities that helps in my code clarity
+Toolrack just the collection of utilities that helps in my code clarity and assistance since those utils too small to be a gem on its own.
 
 ## Installation
 
@@ -40,10 +40,21 @@ class EditController
   # enable instance method to access those uitilities
   include ToolRack::ConditionUtils
   include ToolRack::ExceptionUtils
+  include ToolRack::PasswordUtils
+  include ToolRack::RuntimeUtils
+  include ToolRack::DataConversionUtils
+
+  # there is also shortcut since I write it so often
+  include TR::CondUtils
+  include TR::ExpUtils
+  include TR::PassUtils
+  include TR::RTUtils
+  include TR::DataConvUtils
 end
 ```
 
-Currently it has 3 modules:
+Currently it has 5 modules:
+
 * Condition Utilities
   * is\_empty?(obj) - I found that I've type the condition if not (x.nil? and x.empty?) too frequent that I think this is very best to turn this into a function. The empty test shall take the following test in sequence:
     * First test is x.nil?. If it is return true
@@ -77,6 +88,42 @@ Currently it has 3 modules:
   * raise\_if\_false(obj, message, error) - As the name implied
   * raise\_if\_true(obj, message, error) -  As the name implied
 
+* Runtime utils - Tired rewriting this in other project. Detect if the running system is on which operating system / runtime. The function is pretty self descriptive
+  * RuntimeUtils.on\_windows?
+  * RuntimeUtils.on\_mac?
+  * RuntimeUtils.on\_linux?
+  * RuntimeUtils.on\_ruby?
+  * RuntimeUtils.on\_jruby?
 
- 
+* Password utils - Generate random password with designated complexity
+  * generate\_random\_password(length, options = { complexity: \<value\>, enforce\_quality: \<true/false\> })
+    * length - length of the required generated password
+    * options[:complexity]:
+      * 1 - lowercase alphabet
+      * 2 - lower + upper case alphabet [alpha]
+      * 3 - lower + upper + number [alpha numeric]
+      * 4 - lower + upper + number + symbol
+    * options[:enforce\_quality]
+      * true - generated password is guaranteed to contain the required complexity. E.g. if complexity 4 is required, the password MUST contain lower, upper, number and symbol as its output or a new password that comply to the complexity shall be regenerated. This process is repeated until the required complexity is achieved
+      * false - The rules of the complexity is relexed. E.g. if complexity 4 is requested, the output might not have symbol in it.
+  * all\_lowercase\_alpha?(str)
+  * all\_uppercase\_alpha?(str)
+  * all\_alpha?(str)
+  * all\_number?(str)
+  * all\_symbol?(str)
+  * all\_alpha\_numeric?(str)
+  * all\_alpha\_numeric\_and\_symbol?(str)
+    * All methods above starts with all_\* is to check for strict compliance to the required output. E.g. if all\_alpha?(str) is used, the input str MUST be all alpha to get a true status
+
+  * has\_lowercase\_alpha?(str)
+  * has\_uppercase\_alpha?(str)
+  * has\_alpha?(str)
+  * has\_number?(str)
+  * has\_symbol?(str)
+  * has\_alpha\_numeric?(str)
+  * has\_alpha\_numeric\_or\_symbol?(str)
+    * All methods above start with has_\* is just to check if the given str contains the required specification. E.g if string 'abcdE' will get false status if pass to has\_lowercase\_alpha?(str)
+
+
+Check out the rspec folder for usage
 
