@@ -1,18 +1,3 @@
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#                    Version 2, December 2004
-#
-# Copyright (C) 2021 Chris Liaw <chrisliaw@antrapol.com>
-# Author: Chris Liaw <chrisliaw@antrapol.com>
-#
-# Everyone is permitted to copy and distribute verbatim or modified
-# copies of this license document, and changing it is allowed as long
-# as the name is changed.
-#
-#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-#   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-#
-#  0. You just DO WHAT THE FUCK YOU WANT TO.
-
 
 require 'securerandom'
 
@@ -20,6 +5,8 @@ module Antrapol
   module ToolRack
     module PasswordUtils
       include Antrapol::ToolRack::ConditionUtils
+      
+      class PasswordUtilsError < StandardError; end
 
       # complexity
       # 1 : lowercase alphabet
@@ -27,7 +14,8 @@ module Antrapol
       # 3 : lower + upper + number
       # 4 : lower + upper + number + symbol
       def generate_random_password(length = 12, opts = { complexity: 4, enforce_quality: true })
-        
+       
+
         length = 12 if is_empty?(length)
         length = length.to_i
         length = 12 if length <= 0
@@ -36,6 +24,9 @@ module Antrapol
 
         if not_empty?(opts)
           complexity = opts[:complexity] || 4
+          
+          raise PasswordUtilsError, "Password length too short but complexity too high. Not able generate the password with required complexity." if length <= complexity
+          
           enforce_quality = opts[:enforce_quality] || true
         end
 

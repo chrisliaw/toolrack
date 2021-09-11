@@ -202,6 +202,8 @@ RSpec.describe ToolRack::PassUtils do
       p dres
     end
 
+    expect { gen_rand_pass(3, { complexity: 5 }) }.to raise_exception(Antrapol::ToolRack::PasswordUtils::PasswordUtilsError)
+
   end
 
 end
