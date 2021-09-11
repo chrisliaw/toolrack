@@ -106,8 +106,7 @@ Currently it has 5 modules:
     * options[:enforce\_quality]
       * true - generated password is guaranteed to contain the required complexity. E.g. if complexity 4 is required, the password MUST contain lower, upper, number and symbol as its output or a new password that comply to the complexity shall be regenerated. This process is repeated until the required complexity is achieved
       * false - The rules of the complexity is relexed. E.g. if complexity 4 is requested, the output might not have symbol in it.
-  * gen\_rand\_pass
-  * gen\_pass
+  * gen\_rand\_pass(length, options = { }) & gen\_pass(length, options = { })
     * Alias for method generate\_random\_password
 
   * all\_lowercase\_alpha?(str)
