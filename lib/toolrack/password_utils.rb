@@ -116,7 +116,7 @@ module Antrapol
         s = str.split("")
         lalpha = ('a'..'z').to_a
       
-        (s.difference(lalpha).length == 0)
+        (s-lalpha).length == 0
       end
 
       def has_lowercase_alpha?(str)
@@ -134,7 +134,7 @@ module Antrapol
         s = str.split("")
         ualpha = ('A'..'Z').to_a
 
-        s.difference(ualpha).length == 0
+        (s-ualpha).length == 0
       end
 
       def has_uppercase_alpha?(str)
@@ -157,8 +157,8 @@ module Antrapol
         
         alpha = [lalpha, ualpha].flatten
 
-        t1 = (alpha.difference(s).length == 0)
-        t2 = (alpha.difference(s).length == 0)
+        t1 = (alpha-s).length == 0
+        t2 = (alpha-s).length == 0
 
         t3 = (s & num).length > 0
         t4 = (s & sym).length > 0
@@ -197,7 +197,7 @@ module Antrapol
         s = str.split("")
         num = ('0'..'9').to_a
 
-        !(s.difference(num).length > 0)
+        !((s-num).length > 0)
         
       end
 
@@ -206,7 +206,7 @@ module Antrapol
 
         s = str.split("")
         sym = ('!'..'?').to_a
-        !(s.difference(sym).length > 0)
+        !((s-sym).length > 0)
         
       end
 
@@ -229,7 +229,7 @@ module Antrapol
         ualpha = ('A'..'Z').to_a
         num = ('0'..'9').to_a
         sym = ('!'..'?').to_a
-        sym = sym.difference(num)
+        sym = sym-num
 
         t1 = ((s & lalpha).length > 0)
         t2 = ((s & ualpha).length > 0)
@@ -261,7 +261,7 @@ module Antrapol
         ualpha = ('A'..'Z').to_a
         num = ('0'..'9').to_a
         sym = ('!'..'?').to_a
-        sym = sym.difference(num)
+        sym = sym-num
 
         t1 = ((s & lalpha).length > 0)
         t2 = ((s & ualpha).length > 0)
@@ -279,7 +279,7 @@ module Antrapol
         ualpha = ('A'..'Z').to_a
         num = ('0'..'9').to_a
         sym = ('!'..'?').to_a
-        sym = sym.difference(num)
+        sym = sym-num
 
         t1 = ((s & lalpha).length > 0)
         t2 = ((s & ualpha).length > 0)

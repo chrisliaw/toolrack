@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Collection of simple utilities but I find it increase clarity}
   spec.description   = %q{Just collections of utilities}
   spec.homepage      = "https://github.com/chrisliaw/toolrack"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   #spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "base58"
 
   spec.add_development_dependency "devops_helper", "~> 0.1.0"
+  spec.add_development_dependency "rspec"
 end

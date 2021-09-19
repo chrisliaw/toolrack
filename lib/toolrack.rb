@@ -17,12 +17,16 @@ module Antrapol
   module ToolRack
     class Error < StandardError; end
     # Your code goes here...
- 
   end
 end
 
+# try to get rid of constant redefined warning
+module TR
+  Antrapol::ToolRack
+end
+
 ToolRack = Antrapol::ToolRack
-TR = ToolRack
+#TR = ToolRack
 
 ToolRack::DataConvUtils = Antrapol::ToolRack::DataConversionUtils
 TR::DataConvUtils = ToolRack::DataConvUtils
@@ -38,4 +42,5 @@ TR::ExpUtils = ToolRack::ExpUtils
 
 ToolRack::RTUtils = ToolRack::RuntimeUtils
 TR::RTUtils = ToolRack::RTUtils
+
 
