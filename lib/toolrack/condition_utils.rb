@@ -48,6 +48,12 @@ module Antrapol
       end
       alias_method :is_str_bool?, :is_string_boolean?
 
+      def self.included(klass)
+        klass.class_eval <<-END
+          extend Antrapol::ToolRack::ConditionUtils
+        END
+      end
+
     end # ConditionUtils
   end # MyToolRack
 end # Antrapol
