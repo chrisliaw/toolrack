@@ -26,9 +26,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "tlogger", "~> 0.21"
+  spec.add_dependency "tlogger" #, "~> 0.21"
   spec.add_dependency "base58"
 
-  spec.add_development_dependency "devops_helper", "~> 0.1.0"
+  spec.add_development_dependency "devops_helper" #, "~> 0.1.0"
   spec.add_development_dependency "rspec"
 end
