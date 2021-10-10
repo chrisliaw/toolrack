@@ -12,7 +12,7 @@ require_relative 'toolrack/process_utils'
 require_relative 'toolrack/runtime_utils'
 require_relative 'toolrack/data_conversion_utils'
 require_relative 'toolrack/password_utils'
-require_relative 'toolrack/mixin_helper'
+require_relative 'toolrack/hash_config'
 
 module Antrapol
   module ToolRack
@@ -44,5 +44,5 @@ TR::ExpUtils = ToolRack::ExpUtils
 ToolRack::RTUtils = ToolRack::RuntimeUtils
 TR::RTUtils = ToolRack::RTUtils
 
-TR::MixinHelper = ToolRack::MixinHelper
+TR::HashConfig = ToolRack::HashConfig
 
