@@ -11,7 +11,7 @@ module Antrapol
       # val - variable/object that shall be tested for emptiness
       # message - message to be thrown if it is true
       # error - exception object to be thrown
-      def raise_if_empty(val, message, error = Antrapol::ToolRack::Error)
+      def raise_if_empty(val, message, error = StandardError)
         raise_error(message,error) if is_empty?(val)
       end # raise_if_empty
       alias_method :raise_if_empty?, :raise_if_empty
@@ -19,7 +19,7 @@ module Antrapol
       # 
       # raise_if_false
       #
-      def raise_if_false(bool, message, error = Antrapol::ToolRack::Error)
+      def raise_if_false(bool, message, error = StandardError)
         if not bool
           raise_error(message,error)
         end 
@@ -29,16 +29,16 @@ module Antrapol
       #
       # raise_if_true
       #
-      def raise_if_true(bool, message, error = Antrapol::ToolRack::Error)
+      def raise_if_true(bool, message, error = StandardError)
         raise_if_false(!bool, message, error)
       end # raise_if_true
       alias_method :raise_if_true?, :raise_if_true
 
       protected
-      def raise_error(message, error = Antrapol::ToolRack::Error)
+      def raise_error(message, error = StandardError)
         if error.nil?
           if @default_exception.nil?
-            raise Antrapol::ToolRack::Error, message
+            raise StandardError, message
           else
             raise @default_exception, message
           end

@@ -13,6 +13,7 @@ require_relative 'toolrack/runtime_utils'
 require_relative 'toolrack/data_conversion_utils'
 require_relative 'toolrack/password_utils'
 require_relative 'toolrack/hash_config'
+require_relative 'toolrack/cli_utils'
 
 module Antrapol
   module ToolRack
@@ -26,6 +27,7 @@ module TR
   Antrapol::ToolRack
 end
 
+# aliases
 ToolRack = Antrapol::ToolRack
 #TR = ToolRack
 
@@ -45,4 +47,6 @@ ToolRack::RTUtils = ToolRack::RuntimeUtils
 TR::RTUtils = ToolRack::RTUtils
 
 TR::HashConfig = ToolRack::HashConfig
+
+TR::CliUtils = ToolRack::CliUtils
 
