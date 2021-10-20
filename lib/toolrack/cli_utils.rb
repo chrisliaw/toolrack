@@ -1,6 +1,4 @@
 
-require 'pty'
-require 'expect'
 
 module Antrapol
   module ToolRack

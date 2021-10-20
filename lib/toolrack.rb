@@ -14,6 +14,7 @@ require_relative 'toolrack/data_conversion_utils'
 require_relative 'toolrack/password_utils'
 require_relative 'toolrack/hash_config'
 require_relative 'toolrack/cli_utils'
+require_relative 'toolrack/null_output'
 
 module Antrapol
   module ToolRack
@@ -49,4 +50,6 @@ TR::RTUtils = ToolRack::RTUtils
 TR::HashConfig = ToolRack::HashConfig
 
 TR::CliUtils = ToolRack::CliUtils
+
+TR::NullOut = ToolRack::NullOutput
 
