@@ -115,6 +115,18 @@ module Antrapol
       alias_method :str_to_bool, :string_to_bool
       alias_method :string_to_boolean, :string_to_bool
 
+
+
+      # 
+      # Make it available at class level too
+      #
+      def self.included(klass)
+        klass.class_eval <<-END
+          extend Antrapol::ToolRack::DataConversionUtils
+        END
+      end
+
+
     end
   end
 end

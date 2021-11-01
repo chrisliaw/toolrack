@@ -48,6 +48,9 @@ module Antrapol
       end
       alias_method :is_str_bool?, :is_string_boolean?
 
+      # 
+      # Make it available at class level too
+      #
       def self.included(klass)
         klass.class_eval <<-END
           extend Antrapol::ToolRack::ConditionUtils
