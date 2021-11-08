@@ -10,11 +10,24 @@ module Antrapol
         elsif obj.nil?
           true
         elsif obj.respond_to?(:empty?)
-          if obj.respond_to?(:strip)
-            obj.strip.empty?
-          else
-            obj.empty?
+          begin
+            if obj.respond_to?(:strip)
+              obj.strip.empty?
+            else
+              obj.empty?
+            end
+          rescue ArgumentError => ex
+            # strip sometimes trigger 'invalid byte sequence in UTF-8' error
+            # This will happen if the data is binary but the reading of the data
+            # is in ascii format. 
+            if ex =~ /invalid byte sequence/
+              cuLogger.odebug :is_empty?, "Invalid byte sequence exception might indicates the data is expected in binary but was given a ASCII buffer to test"
+              false
+            else
+              raise
+            end
           end
+
         elsif obj.respond_to?(:length)
           obj.length == 0
         elsif obj.respond_to?(:size)
@@ -47,6 +60,13 @@ module Antrapol
         end
       end
       alias_method :is_str_bool?, :is_string_boolean?
+
+      def cuLogger
+        if @cuLogger.nil?
+          @cuLogger = Tlogger.new
+        end
+        @cuLogger
+      end
 
       # 
       # Make it available at class level too
