@@ -20,8 +20,8 @@ module Antrapol
             # strip sometimes trigger 'invalid byte sequence in UTF-8' error
             # This will happen if the data is binary but the reading of the data
             # is in ascii format. 
-            if ex =~ /invalid byte sequence/
-              cuLogger.odebug :is_empty?, "Invalid byte sequence exception might indicates the data is expected in binary but was given a ASCII buffer to test"
+            if ex.message =~ /invalid byte sequence/
+              cuLogger.twarn :is_empty?, "Invalid byte sequence exception might indicates the data is expected in binary but was given a ASCII buffer to test. Please load the data in binary and test again"
               false
             else
               raise
