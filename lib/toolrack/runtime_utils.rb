@@ -16,6 +16,10 @@ module Antrapol
         (RbConfig::CONFIG['host_os'] =~ /linux/) != nil
       end
 
+      def RuntimeUtils.os_string
+        RbConfig::CONFIG['host_os']
+      end
+
       def RuntimeUtils.on_ruby?
         not on_jruby? 
       end
