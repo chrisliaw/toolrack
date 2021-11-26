@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    toolrack (0.17.0)
+    toolrack (0.18.1)
       base58
       tlogger
 

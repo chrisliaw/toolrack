@@ -16,11 +16,17 @@ module Antrapol
           value = nil
           if blockParams.nil?
             value = block.call(blockKey)
-            value = defValue if is_empty?(value) 
           else
-            value = block.call(blockKey, *blockParams)
-            value = defValue if is_empty?(value)
+            if blockParams.is_a?(Array)
+              value = block.call(blockKey, *blockParams)
+            else
+              value = block.casll(blockKey, blockParams)
+            end
           end
+
+          block.call(:inspect_given_value, blockKey, opts, value)
+
+          value = defValue if is_empty?(value)
 
           value
         else
