@@ -20,7 +20,7 @@ module Antrapol
             if blockParams.is_a?(Array)
               value = block.call(blockKey, *blockParams)
             else
-              value = block.casll(blockKey, blockParams)
+              value = block.call(blockKey, blockParams)
             end
           end
 

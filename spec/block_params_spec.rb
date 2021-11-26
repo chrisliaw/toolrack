@@ -16,6 +16,10 @@ RSpec.describe "Test block params utils" do
         v = value_from_block(:complex, "whatever", { blockArgs: ["jan", "anything"] }, &block)
       end
 
+      def run_with_args2(&block)
+        value_from_block(:complex2, "whatever2", { blockArgs: "direct value" }, &block)
+      end
+
       def intercept_run(&block)
         v = value_from_block(:threshold_met, "default threshold") do |*args|
           key = args.first
@@ -51,8 +55,16 @@ RSpec.describe "Test block params utils" do
 
       "value from the top"
     end
-
     expect(v == "value from the top").to be true
+
+    v = t.run_with_args2 do |*opts|
+      if opts.first == :complex2 and opts.last == "direct value"
+        "value is direct"
+      else
+        "value is unknown"
+      end
+    end
+    expect(v == "value is direct").to be true
 
     expect(t.intercept_run == "default threshold").to be true
     expect {
@@ -73,6 +85,7 @@ RSpec.describe "Test block params utils" do
       end
     end 
     expect(v == "within limit").to be true
+
 
   end
 
