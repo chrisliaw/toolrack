@@ -11,8 +11,8 @@ module Antrapol
           true
         elsif obj.respond_to?(:empty?)
           begin
-            if obj.ascii_only?
-              if obj.respond_to?(:strip)
+            if obj.respond_to?(:strip)
+              if obj.ascii_only?
                 obj.strip.empty?
               else
                 obj.empty?
