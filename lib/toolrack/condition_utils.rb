@@ -11,8 +11,12 @@ module Antrapol
           true
         elsif obj.respond_to?(:empty?)
           begin
-            if obj.respond_to?(:strip)
-              obj.strip.empty?
+            if obj.ascii_only?
+              if obj.respond_to?(:strip)
+                obj.strip.empty?
+              else
+                obj.empty?
+              end
             else
               obj.empty?
             end
@@ -21,7 +25,7 @@ module Antrapol
             # This will happen if the data is binary but the reading of the data
             # is in ascii format. 
             if ex.message =~ /invalid byte sequence/
-              cuLogger.twarn :is_empty?, "Invalid byte sequence exception might indicates the data is expected in binary but was given a ASCII buffer to test. Please load the data in binary and test again"
+              cuLogger.twarn :is_empty?, "Invalid byte sequence exception indicates the data is in binary but was given a ASCII buffer to test."
               false
             else
               raise
