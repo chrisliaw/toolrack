@@ -28,6 +28,10 @@ module Antrapol
         (RUBY_PLATFORM =~ /java/) != nil
       end
 
+      class <<self
+        alias_method :on_java?, :on_jruby?
+      end
+
     end # RuntimeUtils
   end # ToolRack
 end #Antrapol
