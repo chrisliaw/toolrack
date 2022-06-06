@@ -50,6 +50,11 @@ module Antrapol
       end
       alias_method :is_bool?, :is_boolean?
 
+      def not_boolean?(val)
+        not is_boolean?(val)
+      end
+      alias_method :not_bool?, :not_boolean?
+
       def is_string_boolean?(str)
         if not_empty?(str)
           s = str.to_s.strip.downcase
