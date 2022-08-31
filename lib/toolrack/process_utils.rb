@@ -11,7 +11,7 @@ else
 end
 require 'expect'
 require 'io/console'
-require 'tlogger'
+require 'teLogger'
 require 'open3'
 
 

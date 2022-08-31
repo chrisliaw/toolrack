@@ -2,6 +2,9 @@
 require 'singleton'
 require_relative 'condition_utils'
 
+require 'teLogger'
+include TeLogger
+
 module Antrapol
   module ToolRack
  

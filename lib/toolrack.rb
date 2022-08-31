@@ -1,6 +1,6 @@
 require "toolrack/version"
 
-require 'tlogger'
+require 'teLogger'
 require 'singleton'
 
 require 'fileutils'
