@@ -4,6 +4,7 @@ module Antrapol
   module ToolRack
     module ConditionUtils
 
+      private
       def is_empty?(obj)
         if not defined?(obj)
           true
@@ -48,12 +49,18 @@ module Antrapol
       def is_boolean?(val)
         !!val == val
       end
-      alias_method :is_bool?, :is_boolean?
+      def is_bool?(val)
+        is_boolean?(val)
+      end
+      #alias_method :is_bool?, :is_boolean?
 
       def not_boolean?(val)
         not is_boolean?(val)
       end
-      alias_method :not_bool?, :not_boolean?
+      def not_bool?(val)
+        not_boolean?(val)
+      end
+      #alias_method :not_bool?, :not_boolean?
 
       def is_string_boolean?(str)
         if not_empty?(str)
@@ -68,7 +75,10 @@ module Antrapol
           false
         end
       end
-      alias_method :is_str_bool?, :is_string_boolean?
+      #alias_method :is_str_bool?, :is_string_boolean?
+      def is_str_bool?(str)
+        is_string_boolean?(str)
+      end
 
       def cuLogger
         if @cuLogger.nil?
@@ -77,6 +87,8 @@ module Antrapol
         @cuLogger
       end
 
+
+      # Superceded by module_function directive?
       # 
       # Make it available at class level too
       #

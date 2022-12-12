@@ -47,18 +47,29 @@ describe "ToolRack ConditionUtils" do
     
     class Driver
       include ToolRack::ConditionUtils
+
+      def self.check
+        is_empty?("") and not_empty?("test") and is_bool?(true) and is_str_bool?("true")
+      end
+
+      def check
+        respond_to?(:is_empty?, true) and respond_to?(:not_empty?, true)  and respond_to?(:is_bool?, true)   and respond_to?(:is_str_bool?, true)
+      end
+
     end
 
-    expect(Driver).to respond_to(:is_empty?)
-    expect(Driver).to respond_to(:not_empty?)
-    expect(Driver).to respond_to(:is_bool?)
-    expect(Driver).to respond_to(:is_str_bool?)
+    expect(Driver.check).to be true
 
+    expect {
+      Driver.is_empty?("")
+    }.to raise_exception(NoMethodError)
+ 
     d = Driver.new
-    expect(d).to respond_to(:is_empty?)
-    expect(d).to respond_to(:not_empty?)
-    expect(d).to respond_to(:is_bool?)
-    expect(d).to respond_to(:is_str_bool?)
+    expect(d.check).to be true
+    expect {
+      d.is_empty?("")
+    }.to raise_exception(NoMethodError)
+
 
   end
 
