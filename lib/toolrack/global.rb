@@ -5,6 +5,8 @@ require_relative 'condition_utils'
 require 'teLogger'
 include TeLogger
 
+require 'fileutils'
+
 module Antrapol
   module ToolRack
  
@@ -22,7 +24,7 @@ module Antrapol
 
         logFileDir = File.dirname(logFile)
         if not File.exist?(logFileDir)
-          FileUtils.mkdir_p(logFileDir)
+          ::FileUtils.mkdir_p(logFileDir)
         end
         
         if not_empty?(loggerDebug) and (loggerDebug.downcase == 'true')
