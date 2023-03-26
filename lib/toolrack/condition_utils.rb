@@ -47,7 +47,7 @@ module Antrapol
       end # not empty
 
       def is_boolean?(val)
-        !!val == val
+        not_empty?(val) and (!!val == val)
       end
       def is_bool?(val)
         is_boolean?(val)
