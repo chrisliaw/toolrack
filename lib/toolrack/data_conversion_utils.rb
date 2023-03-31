@@ -1,6 +1,6 @@
 
 require 'base64'
-require 'base58'
+#require 'base58'
 
 module Antrapol
   module ToolRack
@@ -42,26 +42,26 @@ module Antrapol
         end
       end
 
-      def to_b58(val)
-        return "" if is_empty?(val)
+      #def to_b58(val)
+      #  return "" if is_empty?(val)
 
-        case val
-        when Integer
-          Base58.int_to_base58(val)
-        else
-          Base58.binary_to_base58(val.force_encoding('BINARY'))
-        end
-      end
+      #  case val
+      #  when Integer
+      #    Base58.int_to_base58(val)
+      #  else
+      #    Base58.binary_to_base58(val.force_encoding('BINARY'))
+      #  end
+      #end
 
-      def from_b58(str)
-        return "" if is_empty?(str)
-        Base58.base58_to_binary(str) 
-      end
+      #def from_b58(str)
+      #  return "" if is_empty?(str)
+      #  Base58.base58_to_binary(str) 
+      #end
 
-      def b58_to_number(str)
-        return 0 if is_empty?(str)
-        Base58.base58_to_int(str)
-      end
+      #def b58_to_number(str)
+      #  return 0 if is_empty?(str)
+      #  Base58.base58_to_int(str)
+      #end
 
       def from_hex(str)
         if not_empty?(str)

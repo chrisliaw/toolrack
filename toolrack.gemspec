@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   #spec.add_dependency "tlogger" #, "~> 0.21"
-  spec.add_dependency "base58"
+  #spec.add_dependency "base58"
 
   #spec.add_development_dependency "devops_helper" #, "~> 0.1.0"
   spec.add_development_dependency "devops_assist" 
