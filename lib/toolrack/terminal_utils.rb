@@ -56,7 +56,7 @@ module Antrapol
           possible.each do |app|
             avail << app if not File.which(app).nil?
           end
-        elsif RuntimeUtils..on_windows?
+        elsif RuntimeUtils.on_windows?
           avail << "cmd.exe"
         elsif RuntimeUtils.on_mac?
           avail << "Terminal"
