@@ -18,6 +18,7 @@ require_relative 'toolrack/null_output'
 require_relative 'toolrack/version_utils'
 require_relative 'toolrack/file_utils'
 require_relative 'toolrack/block_params_utils'
+require_relative 'toolrack/terminal_utils'
 
 module Antrapol
   module ToolRack
@@ -64,4 +65,6 @@ TR::VUtils = TR::VerUtils
 TR::FileUtils = ToolRack::FileUtils
 
 TR::BlockParamsUtils = ToolRack::BlockParamsUtils
+
+TR::TerminalUtils = ToolRack::TerminalUtils
 
