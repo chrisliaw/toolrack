@@ -19,11 +19,40 @@ require_relative 'toolrack/version_utils'
 require_relative 'toolrack/file_utils'
 require_relative 'toolrack/block_params_utils'
 require_relative 'toolrack/terminal_utils'
+require_relative 'toolrack/arg_utils'
+
 
 module Antrapol
   module ToolRack
+    include ConditionUtils
+
     class Error < StandardError; end
     # Your code goes here...
+    #
+    def self.logger(tag = nil, &block)
+      if @_logger.nil?
+        @_logger = TeLogger::Tlogger.new
+      end
+
+      if block
+        if not_empty?(tag)
+          @_logger.with_tag(tag, &block)
+        else
+          @_logger.with_tag(@_logger.tag, &block)
+        end
+      else
+        if is_empty?(tag)
+          @_logger.tag = :tr
+          @_logger
+        else
+          # no block but tag is given? hmm
+          @_logger.tag = tag
+          @_logger
+        end
+      end
+
+    end
+
   end
 end
 
@@ -67,4 +96,6 @@ TR::FileUtils = ToolRack::FileUtils
 TR::BlockParamsUtils = ToolRack::BlockParamsUtils
 
 TR::TerminalUtils = ToolRack::TerminalUtils
+
+TR::ArgUtils = ToolRack::ArgUtils
 
