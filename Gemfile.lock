@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    toolrack (0.22.1)
+    toolrack (0.23.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    colorize (0.8.1)
+    colorize (1.1.0)
     devops_assist (0.3.11)
       git_cli
       git_cli_prompt (~> 0.3.3)
@@ -15,8 +15,7 @@ GEM
       toolrack
       tty-prompt
     diff-lcs (1.5.0)
-    git_cli (0.11.4)
-      gvcs
+    git_cli (0.12.0)
       ptools (~> 1.4.0)
       teLogger
       toolrack
@@ -25,12 +24,12 @@ GEM
       toolrack
       tty-prompt
     gvcs (0.1.2)
-    minitest (5.18.0)
+    minitest (5.19.0)
     pastel (0.8.0)
       tty-color (~> 0.5)
     ptools (1.4.3)
     rake (12.3.3)
-    release-gem (0.1.12)
+    release-gem (0.1.23)
       colorize
       git_cli
       gvcs
@@ -42,15 +41,15 @@ GEM
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
       rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.1)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.2)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.5)
+    rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-support (3.12.0)
+    rspec-support (3.12.1)
     teLogger (0.2.2)
     tty-color (0.6.0)
     tty-command (0.10.1)
