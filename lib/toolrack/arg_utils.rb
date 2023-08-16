@@ -111,15 +111,19 @@ module Antrapol
         klass.extend(ClassMethods)
       end
 
-      def parse_argv(argv)
+      def parse_argv(argv, &block)
         cb = self.class.callbacks[:pre_processing]
         if not_empty?(cb) and cb[:cb]
           #logger.debug "Calling pre-processing for class #{self}"
+          @parse_argv_block = block
+          # here will engage the DSL method of the included class
           update_argv, val = instance_exec(argv, &cb[:cb])
           #logger.debug "Preprocessing return update flag : #{update_argv} and list #{val} for class #{self}"
           argv = val if update_argv
         end
 
+        # split the key and value if given
+        # > app -n:john
         if self.class.value_separator == " " and argv.length > 0
           parse_argv_space(argv)
         else
@@ -128,7 +132,7 @@ module Antrapol
 
         cbp = self.class.callbacks[:post_processing]
         if not_empty?(cbp) and cbp[:cb]
-          logger.debug "Post processing got #{argv}"
+          #logger.debug "Post processing got #{argv}"
           instance_exec(argv, &cbp[:cb]) 
         end
       end 
