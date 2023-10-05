@@ -31,7 +31,12 @@ module Antrapol
     #
     def self.logger(tag = nil, &block)
       if @_logger.nil?
-        @_logger = TeLogger::Tlogger.new
+        trLogout = ENV["TR_LOGOUT"]
+        if not_empty?(trLogout)
+          @_logger = TeLogger::Tlogger.new(trLogout, 5, 5*1024*1024)
+        else
+          @_logger = TeLogger::Tlogger.new('toolrack.log', 5, 5*1024*1024)
+        end
       end
 
       if block
@@ -67,6 +72,7 @@ ToolRack = Antrapol::ToolRack
 
 ToolRack::DataConvUtils = Antrapol::ToolRack::DataConversionUtils
 TR::DataConvUtils = ToolRack::DataConvUtils
+TR::DCUtils = TR::DataConvUtils
 
 ToolRack::CondUtils = ToolRack::ConditionUtils
 TR::CondUtils = ToolRack::ConditionUtils

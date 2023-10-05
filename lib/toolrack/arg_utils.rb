@@ -20,15 +20,15 @@ module Antrapol
 
         def opt(key, desc, opts = {}, &block)
           raise RequiredFieldEmpty, "Key field cannot be empty" if is_empty?(key)
-          raise DuplicatedField, "Given key '#{key}' already exist" if options.keys.include?(key)
+          raise DuplicatedField, "Given key '#{key}' already exist" if arg_options.keys.include?(key)
           raise RequiredFieldEmpty, "Block is require" if not block
 
-          options[key] = { key: key, desc: desc, options: opts, callback: block }
+          arg_options[key] = { key: key, desc: desc, arg_options: opts, callback: block }
           required << key if opts[:required] == true
         end
 
         def opt_alias(existing, new)
-          raise InvalidKey, "Existing key '#{existing}'to map to new key '#{new}' not found" if not options.keys.include?(existing)
+          raise InvalidKey, "Existing key '#{existing}'to map to new key '#{new}' not found" if not arg_options.keys.include?(existing)
           aliases[new] = existing 
         end
 
@@ -66,11 +66,11 @@ module Antrapol
           @_req
         end
 
-        def options
-          if @_options.nil?
-            @_options = {}
+        def arg_options
+          if @_arg_options.nil?
+            @_arg_options = {}
           end
-          @_options
+          @_arg_options
         end
 
         def aliases
@@ -152,10 +152,10 @@ module Antrapol
             logger.debug "Processing : #{a}"
 
             key = a
-            conf = cls.options[key]
+            conf = cls.arg_options[key]
             if is_empty?(conf)
               al = cls.aliases[key]
-              conf = cls.options[al] if not_empty?(al)
+              conf = cls.arg_options[al] if not_empty?(al)
             end
 
             if is_empty?(conf)
@@ -216,10 +216,10 @@ module Antrapol
 
             logger.debug "After separation : #{key}"
 
-            conf = cls.options[key]
+            conf = cls.arg_options[key]
             if is_empty?(conf)
               al = cls.aliases[key]
-              conf = cls.options[al] if not_empty?(al)
+              conf = cls.arg_options[al] if not_empty?(al)
             end
 
             if is_empty?(conf)

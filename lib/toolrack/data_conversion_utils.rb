@@ -97,6 +97,37 @@ module Antrapol
         end
       end
 
+      def hex_to_bin(hex)
+        if not_empty?(hex)
+          # [abcd1234].pack('H*')
+          # turn hex to binary
+          case hex
+          when Array
+            hex.pack('H*')
+          else 
+            hex.split.pack('H*')
+          end
+        else
+          hex
+        end
+      end
+
+      def bin_to_int(bin)
+        if not_empty?(bin)
+          bin.bytes.inject { |a,b| (a << 8) + b }
+        else
+          bin
+        end
+      end
+
+      def int_to_bin(intStr)
+        if not_empty?(intStr)
+          hex_to_bin(intStr.to_i.to_s(16))
+        else
+          intStr
+        end
+      end
+
       def string_to_bool(str)
         if not_empty?(str) and is_str_bool?(str)
           s = str.to_s.strip.downcase
