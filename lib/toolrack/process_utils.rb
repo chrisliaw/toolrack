@@ -2,10 +2,10 @@
 require_relative 'global'
 require_relative 'runtime_utils'
 
-if Antrapol::ToolRack::RuntimeUtils.on_windows?
+if Antrapol::ToolRack::RuntimeUtils.on_windows? or Antrapol::ToolRack::RuntimeUtils.on_mac?
   # pty causing "function 'openpty' not found in msvcrt.dll" in some
   # windows platform. Due to patches?
-  Antrapol::ToolRack::Logger.instance.glogger.debug "On Windows. Not going to load gem 'pty'"
+  Antrapol::ToolRack::Logger.instance.glogger.debug "On Windows or Mac. Not going to have gem 'pty' support"
 else
   require 'pty'
 end
