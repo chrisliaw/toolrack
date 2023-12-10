@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    toolrack (0.24.0)
+    toolrack (0.24.1)
 
 GEM
   remote: https://rubygems.org/
