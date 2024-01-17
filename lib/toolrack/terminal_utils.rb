@@ -13,8 +13,9 @@ module Antrapol
         cmd = [cmd] if not cmd.is_a?(Array)
 
         case terminal
-        when "terminator"
-          `#{terminal} -x "#{cmd.join(" ")}"`
+        when "terminator", "tilix"
+          #`#{terminal} -x "#{cmd.join(" ")}"`
+          `#{terminal} -e "bash -c '#{cmd.join(" ")}'" &`
 
         when "gnome-terminal"
           `#{terminal} -- bash -c "#{cmd.join(" ")}; exec bash"`
@@ -44,7 +45,7 @@ module Antrapol
           `
 
         else
-          raise TerminalUtilsException, "Terminal '#{terminal}' not supported. Supported terminal are : #{tu.possible_terminal.join(", ")}" 
+          raise TerminalUtilsException, "Terminal '#{terminal}' not supported. Supported terminal are : #{tu_possible_terminal.join(", ")}" 
         end
 
       end
