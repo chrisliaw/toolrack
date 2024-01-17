@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    toolrack (0.23.3)
+    toolrack (0.24.1)
 
 GEM
   remote: https://rubygems.org/
@@ -53,6 +53,8 @@ GEM
     wisper (2.0.1)
 
 PLATFORMS
+  arm64-darwin-23
+  universal-java-11
   x86_64-linux
 
 DEPENDENCIES
